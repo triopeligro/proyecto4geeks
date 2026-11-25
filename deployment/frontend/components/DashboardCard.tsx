@@ -17,7 +17,7 @@ interface DashboardCardProps {
   // Modo clásico
   currentValue?: number;
   maxValue?: number;
-
+  aprox?: boolean
   // NUEVO → modo múltiple
   values?: PieSegment[];
 }
@@ -28,6 +28,7 @@ export default function DashboardCard({
   subtitle,
   color = "blue",
   icon,
+  aprox = false,
   currentValue, // Quitamos el default = 0 para poder validar si viene o no
   maxValue = 100,
   box_class = "box box-black",
@@ -92,7 +93,8 @@ export default function DashboardCard({
           </span>
 
           <p className="text-3xl font-bold tracking-tight text-gray-100">
-            {value}
+
+            {aprox ? `≈ ${value}` : value}
           </p>
         </div>
 

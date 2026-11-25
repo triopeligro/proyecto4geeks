@@ -73,7 +73,7 @@ export default function DashboardSection({ stats, predictions }: Props) {
                             box_class="box box-blue"
                             title="Total Audios"
                             value={stats.total_files.toLocaleString()}
-                            subtitle="Dataset de entrenamiento"
+                            subtitle="Dataset Total"
                             color="white"
                             icon="/assets/icons/SVG/nota.svg"
                         />
@@ -89,7 +89,7 @@ export default function DashboardSection({ stats, predictions }: Props) {
                             box_class="box box-blue"
                             title="Alertables"
                             value={stats.alertable_count.toLocaleString()}
-                            subtitle="Sonidos de alerta"
+                            subtitle="Sonidos Considerados de alerta"
                             color="red"
                             icon="/assets/icons/SVG/alertable.svg"
                         />
@@ -101,8 +101,8 @@ export default function DashboardSection({ stats, predictions }: Props) {
                     <div className={[styles["basic__metrics__container"], "grid grid-cols-2 md:grid-cols-4 gap-4"].join(" ")}>
                         <DashboardCard
                             box_class="box box-blue"
-                            title="Accuracy Binaria"
-                            subtitle="Checkpoint: Alertable"
+                            title="Accuracy Binario"
+                            subtitle="Para deteccion Alertable"
                             value={formatPct(alertableAccuracy)}
                             currentValue={alertableAccuracy * 100}
                             maxValue={100}
@@ -110,8 +110,8 @@ export default function DashboardSection({ stats, predictions }: Props) {
                         />
                         <DashboardCard
                             box_class="box box-blue"
-                            title="F1 Binaria"
-                            subtitle="Checkpoint: Alertable"
+                            title="F1 Binario"
+                            subtitle="Para deteccion Alertable"
                             value={formatPct(alertablef1)}
                             currentValue={alertablef1 * 100}
                             maxValue={100}
@@ -122,7 +122,7 @@ export default function DashboardSection({ stats, predictions }: Props) {
                             box_class="box box-blue"
                             title="Accuracy Multiclase"
                             value={formatPct(humanAccuracy)}
-                            subtitle="Checkpoint: Human Label"
+                            subtitle="Para deteccion especifica"
                             color="blue"
                             currentValue={humanAccuracy * 100}
                             maxValue={100}
@@ -131,8 +131,8 @@ export default function DashboardSection({ stats, predictions }: Props) {
                         <DashboardCard
                             box_class="box box-blue"
                             title="F1-Score Multiclase"
-                            value={humanF1.toFixed(4)}
-                            subtitle="Métrica balanceada"
+                            value={formatPct(humanF1)}
+                            subtitle="Para deteccion especifica"
                             color="green"
                             icon="/assets/icons/SVG/metricas.svg"
                         />
@@ -148,12 +148,13 @@ export default function DashboardSection({ stats, predictions }: Props) {
                             currentValue={(estimatedGlobalAccuracy ?? 0) * 100}
                             maxValue={100}
                             icon="/assets/icons/SVG/testeda.svg"
+                            aprox={true}
                         />
                     </div>
                     {/* Fila 3: Accuracy global real del sistema jerárquico */}
                     <div className="box black-box rounded-xl shadow p-5">
                         <h3 className="text-base font-semibold text-gray-200 mb-4 flex items-center gap-2">
-                            <img src="/assets/icons/SVG/lista.svg" alt="" className="w-5 h-5 invert opacity-80" />
+                            <div className={styles.metricas_icon + " w-5 h-5 invert opacity-80"} />
                             Métricas de Validación Final (Modelo Human Label)
                         </h3>
                         <div className="overflow-x-auto">

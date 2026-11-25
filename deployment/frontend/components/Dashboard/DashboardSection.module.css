@@ -1,3 +1,11 @@
 .basic__metrics__container {
     color: white;
 }
+
+.metricas_icon {
+    mask-image: url("/assets/icons/SVG/lista.svg");
+    background-color: #000000 !important;
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
