@@ -1,0 +1,10 @@
+# GitHub API Configuration
+# Obtén tu token en: https://github.com/settings/tokens
+# Selecciona permisos: repo (acceso completo)
+
+GITHUB_TOKEN=
+
+# Información del repositorio (estos ya están configurados)
+REPO_OWNER=triopeligro
+REPO_NAME=proyecto4geeks
+BRANCH=main
